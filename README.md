@@ -1,24 +1,27 @@
-[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/template-add-on)
-[![Stars on vaadin.com/directory](https://img.shields.io/vaadin-directory/star/template-add-on.svg)](https://vaadin.com/directory/component/template-add-on)
-[![Build Status](https://jenkins.flowingcode.com/job/template-addon/badge/icon)](https://jenkins.flowingcode.com/job/template-addon)
-[![Maven Central](https://img.shields.io/maven-central/v/com.flowingcode.vaadin.addons/template-addon)](https://mvnrepository.com/artifact/com.flowingcode.vaadin.addons/template-addon)
-[![Javadoc](https://img.shields.io/badge/javadoc-00b4f0)](https://javadoc.flowingcode.com/artifact/com.flowingcode.vaadin.addons/template-addon)
+[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/regular-expression-field-add-on)
+[![Stars on vaadin.com/directory](https://img.shields.io/vaadin-directory/star/regular-expression-field-add-on.svg)](https://vaadin.com/directory/component/regular-expression-field-add-on)
+[![Build Status](https://jenkins.flowingcode.com/job/regular-expression-field-addon/badge/icon)](https://jenkins.flowingcode.com/job/regular-expression-field-addon)
+[![Maven Central](https://img.shields.io/maven-central/v/com.flowingcode.vaadin.addons/regular-expression-field-addon)](https://mvnrepository.com/artifact/com.flowingcode.vaadin.addons/regular-expression-field-addon)
+[![Javadoc](https://img.shields.io/badge/javadoc-00b4f0)](https://javadoc.flowingcode.com/artifact/com.flowingcode.vaadin.addons/regular-expression-field-addon)
 
-# Template Add-on
+# Regular Expression Field Add-on
 
-This is a template project for building new Vaadin 24 add-ons
+A field for Vaadin 24 that assists in creating regular expressions.
 
 ## Features
 
-* List the features of your add-on in here
+* A ComboBox option for creating simple regular expressions, such as "contains."
+* Additional options for patterns like "starts with" and "ends with."
+* An advanced mode that assists in creating complex regular expressions with automatic validation.
+
 
 ## Online demo
 
-[Online demo here](http://addonsv24.flowingcode.com/template)
+[Online demo here](http://addonsv24.flowingcode.com/regular-expression-field)
 
 ## Download release
 
-[Available in Vaadin Directory](https://vaadin.com/directory/component/template-add-on)
+[Available in Vaadin Directory](https://vaadin.com/directory/component/regular-expression-field-add-on)
 
 ### Maven install
 
@@ -27,7 +30,7 @@ Add the following dependencies in your pom.xml file:
 ```xml
 <dependency>
    <groupId>com.flowingcode.vaadin.addons</groupId>
-   <artifactId>template-addon</artifactId>
+   <artifactId>regular-expression-field-addon</artifactId>
    <version>X.Y.Z</version>
 </dependency>
 ```
@@ -69,7 +72,7 @@ Then, follow these steps for creating a contribution:
 
 This add-on is distributed under Apache License 2.0. For license terms, see LICENSE.txt.
 
-TEMPLATE_ADDON is written by Flowing Code S.A.
+Regular Expression Field Add-On is written by Flowing Code S.A.
 
 # Developer Guide
 
