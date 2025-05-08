@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.flowingcode.vaadin.addons</groupId>
-    <artifactId>template-addon</artifactId>
+    <artifactId>regular-expression-field-addon</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Template Add-on</name>
-    <description>Template Add-on for Vaadin Flow</description>
+    <name>Regular Expression Field Add-on</name>
+    <description>Regular Expression Field Add-on for Vaadin Flow</description>
     <url>https://www.flowingcode.com/en/open-source/</url>
 
     <properties>
-        <vaadin.version>24.4.6</vaadin.version>
+        <vaadin.version>24.7.0</vaadin.version>
         <selenium.version>4.10.0</selenium.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -21,7 +21,6 @@
         <drivers.dir>${project.basedir}/drivers</drivers.dir>
         <jetty.version>11.0.20</jetty.version>
         <flowingcode.commons.demo.version>4.2.0</flowingcode.commons.demo.version>
-        <frontend.hotdeploy>true</frontend.hotdeploy>
     </properties>
 
     <organization>
@@ -39,9 +38,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/FlowingCode/AddonStarter24</url>
-        <connection>scm:git:git://github.com/FlowingCode/AddonStarter24.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:/FlowingCode/AddonStarter24.git</developerConnection>
+        <url>https://github.com/FlowingCode/RegularExpressionField</url>
+        <connection>scm:git:git://github.com/FlowingCode/RegularExpressionField.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:/FlowingCode/RegularExpressionField.git</developerConnection>
         <tag>master</tag>
     </scm>
 
@@ -121,6 +120,12 @@
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-core</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.36</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.flowingcode.vaadin.addons.demo</groupId>
@@ -264,15 +269,12 @@
                     <scan>3</scan>
                     <!-- Use test scope because the UI/demo classes are in the test package. -->
                     <useTestScope>true</useTestScope>
-                    <webApp>
-                        <resourceBases>
-                            <resourceBase>src/test/resources/META-INF/resources</resourceBase>
-                            <resourceBase>src/main/resources/META-INF/resources</resourceBase>
-                        </resourceBases>
-                    </webApp>
                     <supportedPackagings>
                         <supportedPackaging>jar</supportedPackaging>
                     </supportedPackagings>
+                    <systemProperties>
+                        <vaadin.frontend.hotdeploy>true</vaadin.frontend.hotdeploy>
+                    </systemProperties>
                 </configuration>
             </plugin>
         </plugins>
@@ -503,8 +505,11 @@
             </build>
         </profile>
 
-	<profile>
+        <profile>
             <id>demo-war</id>
+            <properties>
+                <vaadin.productionMode>true</vaadin.productionMode>
+            </properties>
             <dependencies>
                 <dependency>
                     <groupId>com.vaadin</groupId>
@@ -540,15 +545,21 @@
                              <goal>run</goal>
                           </goals>
                           <configuration>
-                             <target name="copy-demo">
-                                <copy todir="${project.basedir}/src/main">
+                             <tasks>
+                                <copy todir="${project.basedir}/src/main" failonerror="false">
                                     <fileset dir="${project.basedir}/src/test">
                                         <include name="**"/>
                                         <exclude name="**/it/*"/>
                                         <exclude name="**/test/*"/>
                                     </fileset>
                                 </copy>
-                             </target>
+                                <copy todir="${project.basedir}/src/main/resources/META-INF/resources/frontend" failonerror="false">
+                                    <fileset dir="${project.basedir}/src/main/resources/META-INF/frontend"/>
+                                </copy>
+                                <delete failonerror="false">
+                                    <fileset dir="${project.basedir}/src/main/resources/META-INF/frontend"/>
+                                </delete>
+                             </tasks>
                           </configuration>
                        </execution> 
                      </executions>
@@ -586,7 +597,6 @@
                 </plugins>
             </build>
         </profile>
-	
     </profiles>
 
 </project>

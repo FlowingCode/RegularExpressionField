@@ -17,15 +17,26 @@
  * limitations under the License.
  * #L%
  */
-package com.flowingcode.vaadin.addons;
+package com.flowingcode.vaadin.addons.regex;
 
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.router.RouterLayout;
+/**
+ * Defines the available operators for creating regular expressions in a
+ * {@link RegularExpressionField}.
+ *
+ * @author Javier Godoy
+ */
+public enum RegularExpressionOperator {
 
-@SuppressWarnings("serial")
-public class DemoLayout extends Div implements RouterLayout {
+  /** Matches strings that start with a given substring. */
+  STARTS_WITH,
 
-  public DemoLayout() {
-    setSizeFull();
-  }
+  /** Matches strings that end with a given substring. */
+  ENDS_WITH,
+
+  /** Matches strings that contain a given substring. */
+  CONTAINS,
+
+  /** Enables advanced custom regular expressions with validation support. */
+  ADVANCED;
+
 }
