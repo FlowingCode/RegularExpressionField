@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 @DemoSource
 @PageTitle("Regular Expression Field Add-on Demo")
 @SuppressWarnings("serial")
-@Route(value = "demo", layout = RegularExpressionFieldView.class)
+@Route(value = "regular-expression-field/demo", layout = RegularExpressionFieldView.class)
 public class RegularExpressionFieldDemo extends Div {
 
   public RegularExpressionFieldDemo() {
